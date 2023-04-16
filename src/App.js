@@ -79,14 +79,14 @@ export default function App() {
       <Container>
         <Heading title="Todo App" />
         <TodoForm todo={todo} setTodo={setTodo} addTodo={addTodo} />
-        {todos.some(todo => !todo.markedAsComplete) ? <SubHeading title="All Todos" /> : ''}
+        {todos.some(todo => !todo.markedAsComplete) && <SubHeading title="All Todos" />}
         <Todos
           todos={todos}
           editTodo={editTodo}
           deleteTodo={deleteTodo}
           markOrUnmarkTodo={markOrUnmarkTodo}
         />
-        {todos.some(todo => todo.markedAsComplete) ? <SubHeading title="Todos Completed" /> : ''}
+        {todos.some(todo => todo.markedAsComplete) && <SubHeading title="Todos Completed" />}
         <MarkedTodos todos={todos} deleteTodo={deleteTodo} markOrUnmarkTodo={markOrUnmarkTodo} />
       </Container>
       <ToastContainer
