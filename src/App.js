@@ -49,23 +49,29 @@ export default function App() {
       newTodo = prompt('Please provide some value');
     }
 
-    const todoList = [...todos];
-    const todo = todoList.find(todo => todo.id === todoId);
-    const todoIndex = todoList.findIndex(todo => todo.id === todoId);
-    todoList.splice(todoIndex, 1, { ...todo, task: newTodo });
+    const newTodos = todos.map(todo => {
+      if (todo.id === todoId) {
+        return { ...todo, task: newTodo };
+      } else {
+        return todo;
+      }
+    });
 
-    setTodos(todoList);
+    setTodos(newTodos);
   };
 
   const deleteTodo = todoId => setTodos(todos.filter(todo => todo.id !== todoId));
 
   const markOrUnmarkTodo = todoId => {
-    const todoList = [...todos];
-    const todo = todoList.find(todo => todo.id === todoId);
-    const todoIndex = todoList.findIndex(todo => todo.id === todoId);
-    todoList.splice(todoIndex, 1, { ...todo, markedAsComplete: !todo.markedAsComplete });
+    const newTodos = todos.map(todo => {
+      if (todo.id === todoId) {
+        return { ...todo, markedAsComplete: !todo.markedAsComplete };
+      } else {
+        return todo;
+      }
+    });
 
-    setTodos(todoList);
+    setTodos(newTodos);
   };
 
   return (
