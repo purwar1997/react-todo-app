@@ -22,7 +22,7 @@ export default function App() {
     if (localMarkedTodos) {
       setMarkedTodos(JSON.parse(localMarkedTodos));
     }
-  }, []);
+  });
 
   useEffect(() => {
     localStorage.setItem('todos', JSON.stringify(todos));
